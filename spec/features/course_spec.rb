@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'course', type: :feature do
+  
   # For each parent table
   # As a visitor
   # When I visit '/parents'
@@ -21,4 +22,10 @@ RSpec.describe 'course', type: :feature do
     expect(page).to have_content(course_1.name)
     expect(page).to_not have_content(course_2.name)
   end
+
+#   As a visitor
+# When I visit '/parents/:parent_id/child_table_name'
+# Then I see each Child that is associated with that Parent with each Child's attributes
+# (data from each column that is on the child table)
+  it 
 end

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   root to: 'golfers#index'
   get "/golfers", to: 'golfers#index'
+  get "/golfers/:id", to: 'golfers#show'
 end
