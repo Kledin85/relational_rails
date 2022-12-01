@@ -1,0 +1,7 @@
+<h1> Golfers </h1>
+
+<% @golfers.each do |golfer| %>
+  <h1><%= golfer.name %></h1>
+    <%= golfer.adult %>
+    <%= golfer.tee_time %>
+<% end %>
