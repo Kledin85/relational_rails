@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: 'courses#index'
   get "/courses", to: 'courses#index'
   get "/courses/:id", to: 'courses#show'
+
+  root to: 'golfers#index'
+  get "/golfers", to: 'golfers#index'
 end
