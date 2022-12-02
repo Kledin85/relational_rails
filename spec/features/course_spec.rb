@@ -48,9 +48,19 @@ RSpec.describe 'course', type: :feature do
 # When I visit the parent index,
 # I see that records are ordered by most recently created first
 # And next to each of the records I see when it was created
-  it 'show most recently created first' do
+  it 'shows the created at time next to the course name' do
     visit '/courses'
 
     expect(page).to have_content(course_1.created_at)
+  end
+
+  it 'shows most recently created first' do
+    course_2.created_at = course_2.created_at + 10 * 6
+    course_2.save
+    visit '/courses'
+
+    expected = course_2.created_at > course_1.created_at
+
+    expect(expected).to be true
   end
 end
