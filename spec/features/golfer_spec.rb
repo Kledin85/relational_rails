@@ -37,4 +37,45 @@ RSpec.describe 'golfer', type: :feature do
     expect(page).to have_content(golfer_1.tee_time)
     expect(page).to have_content(golfer_1.course_id)
   end
+
+#   As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Child Index
+  describe 'link to child index' do
+    it 'courses page has a link on the golfers page' do
+      visit '/courses'
+      click_link('Golfers')
+      
+      expect(current_path).to eq('/golfers')
+    end
+
+    it 'courses/course.id page has a link on the golfers page' do
+      visit "/courses/#{course_1.id}"
+      click_link('Golfers')
+      
+      expect(current_path).to eq('/golfers')
+    end
+
+    it 'golfers page has a link on the golfers page' do
+      visit "/golfers"
+      click_link('Golfers')
+      
+      expect(current_path).to eq('/golfers')
+    end
+
+    it 'golfers/golfer_id page has a link on the golfers page' do
+      visit "/golfers/#{golfer_1.id}"
+      click_link('Golfers')
+      
+      expect(current_path).to eq('/golfers')
+    end
+
+    it 'courses/course_id/golfers page has a link on the golfers page' do
+      visit "/courses/#{course_1.id}/golfers"
+      click_link('Golfers')
+      
+      expect(current_path).to eq('/golfers')
+    end
+    
+  end
 end
