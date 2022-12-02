@@ -63,4 +63,15 @@ RSpec.describe 'course', type: :feature do
 
     expect(expected).to be true
   end
+
+#   As a visitor
+# When I visit a parent's show page
+# I see a count of the number of children associated with this parent
+
+  it 'shows the number of golfers at a course' do
+    visit "/courses/#{course_1.id}"
+
+    expect(page).to have_content(course_1.golfers.length)
+    expect(page).to_not have_content(course_2.golfers.length)
+  end
 end
