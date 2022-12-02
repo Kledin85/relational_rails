@@ -6,8 +6,8 @@ RSpec.describe 'course', type: :feature do
   # As a visitor
   # When I visit '/parents'
   # Then I see the name of each parent record in the system
-  let!(:course_1)  { Course.create!(name: "Kyle Course", city: "Ankeny", tee_times: 45) }
-  let!(:course_2)  { Course.create!(name: "Not Kyle Course", city: "Des Moines", tee_times: 50) }
+  let!(:course_1)  { Course.create!(name: "Kyles Course", city: "Ankeny", tee_times: 45) }
+  let!(:course_2)  { Course.create!(name: "Not Kyles Course", city: "Des Moines", tee_times: 50) }
   let!(:golfer_1)  { course_1.golfers.create!(name: "Kyle", adult: true, tee_time: Time.now) }
   let!(:golfer_2)  { course_1.golfers.create!(name: "wes", adult: true, tee_time: Time.now) }
   let!(:golfer_3)  { course_2.golfers.create!(name: "John", adult: true, tee_time: Time.now) }
@@ -42,5 +42,25 @@ RSpec.describe 'course', type: :feature do
     expect(page).to have_content(golfer_2.tee_time)
     expect(page).to have_content(golfer_2.course_id)
     expect(page).to_not have_content(golfer_3.name)
+  end
+
+#   As a visitor
+# When I visit the parent index,
+# I see that records are ordered by most recently created first
+# And next to each of the records I see when it was created
+  it 'shows the created at time next to the course name' do
+    visit '/courses'
+
+    expect(page).to have_content(course_1.created_at)
+  end
+
+  it 'shows most recently created first' do
+    course_2.created_at = course_2.created_at + 10 * 6
+    course_2.save
+    visit '/courses'
+
+    expected = course_2.created_at > course_1.created_at
+
+    expect(expected).to be true
   end
 end

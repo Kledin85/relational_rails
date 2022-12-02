@@ -2,7 +2,7 @@
 
 <% @golfers.each do |golfer| %>
   <h1><%= golfer.name %></h1>
-    <%= golfer.adult %>
-    <%= golfer.tee_time %>
-    <%= golfer.course_id %>
+    <p>Adult?:<%= golfer.adult %></p>
+    <p>Tee_time:<%=golfer.tee_time %></p>
+    <p>Course_id:<%= golfer.course_id %></p>
 <% end %>
