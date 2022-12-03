@@ -115,4 +115,15 @@ describe 'link to parent index' do
   end
   
 end
+
+# As a visitor
+# When I visit a parent show page ('/parents/:id')
+# Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
+  it 'links to the child table name' do
+    visit "/courses/#{course_1.id}"
+    click_link('Course Details')
+
+    expect(current_path).to eq("/courses/#{course_1.id}/golfers")
+
+  end
 end
