@@ -6,4 +6,12 @@ class CoursesController < ApplicationController
   def show
    @course = Course.find(params[:id])
   end
+
+  def new
+  end
+
+  def create
+    course = Course.create(name: params[:name])
+    redirect_to "/courses"
+  end
 end
