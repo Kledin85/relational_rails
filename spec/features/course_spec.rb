@@ -74,4 +74,45 @@ RSpec.describe 'course', type: :feature do
     expect(page).to have_content(course_1.golfers.length)
     expect(page).to_not have_content(course_2.golfers.length)
   end
+
+#   As a visitor
+# When I visit any page on the site
+# Then I see a link at the top of the page that takes me to the Parent Index
+describe 'link to parent index' do
+  it 'courses page has a link on the courses page' do
+    visit '/courses'
+    click_link('Courses')
+    
+    expect(current_path).to eq('/courses')
+  end
+
+  it 'courses/course.id page has a link on the courses page' do
+    visit "/courses/#{course_1.id}"
+    click_link('Courses')
+    
+    expect(current_path).to eq('/courses')
+  end
+
+  it 'golfers page has a link on the courses page' do
+    visit "/golfers"
+    click_link('Courses')
+    
+    expect(current_path).to eq('/courses')
+  end
+
+  it 'golfers/golfer_id page has a link on the courses page' do
+    visit "/golfers/#{golfer_1.id}"
+    click_link('Courses')
+    
+    expect(current_path).to eq('/courses')
+  end
+
+  it 'courses/course_id/golfers page has a link on the courses page' do
+    visit "/courses/#{course_1.id}/golfers"
+    click_link('Courses')
+    
+    expect(current_path).to eq('/courses')
+  end
+  
+end
 end
