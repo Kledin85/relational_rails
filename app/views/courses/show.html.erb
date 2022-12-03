@@ -1,6 +1,6 @@
 <%= link_to "Golfers", "/golfers" %> <%= link_to "Courses", "/courses" %>
 
 <h1> Course </h1>
-<%= link_to "Course Details", "/courses/#{@course.id}/golfers" %>
+<%= link_to "Course Golfers", "/courses/#{@course.id}/golfers" %>
 <h2><%= @course.name %><h2>
 Golfers:<%= @course.golfers.length %>
