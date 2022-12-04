@@ -3,5 +3,5 @@
 <%= link_to "Create Course", "/courses/new" %>
 
 <% @courses.order(created_at: :desc).each do |course| %>
-   <p><%= course.name %> <%= course.created_at %></p>
+   <p><%= @course.name %> <%= course.created_at %></p>
   <% end %>

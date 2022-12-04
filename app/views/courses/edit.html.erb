@@ -1,0 +1,10 @@
+<%= form_with url: "/courses/#{@course.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :city %>
+  <%= form.text_field :city %>
+  <%= form.label :tee_times %>
+  <%= form.text_field :tee_times %>
+  
+  <%= form.submit "Update Course"%>
+  <% end %>

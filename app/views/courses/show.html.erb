@@ -1,6 +1,7 @@
 <%= link_to "Golfers", "/golfers" %> <%= link_to "Courses", "/courses" %>
 
 <h1> Course </h1>
+<%= button_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %>
 <%= link_to "Course Golfers", "/courses/#{@course.id}/golfers" %>
 <h2><%= @course.name %><h2>
 Golfers:<%= @course.golfers.length %>
