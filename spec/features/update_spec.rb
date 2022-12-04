@@ -24,17 +24,18 @@ RSpec.describe 'The Course Update' do
 
   end
   it 'can update a course' do
-    visit '/courses'
+    visit "/courses/#{course_1.id}"
 
-    expect(page).to have_content(course_1.tee_times = 45)
-
+    expect(page).to have_content course_1.name = "Kyles Course"
+    
     click_button ("Update #{course_1.name}")
-
-    fill_in('name', with: "Kyle Course")
+    
+    fill_in('name', with: "Still Kyles Course")
     fill_in('city', with: "Ankeny")
     fill_in('tee_times', with: 40)
     click_button 'Update Course'
-
+    
     expect(current_path).to eq("/courses")
+    expect(page).to have_content course_1.name = "Still Kyles Course"    
   end
 end   
