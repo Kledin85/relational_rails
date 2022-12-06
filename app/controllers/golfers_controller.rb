@@ -1,6 +1,6 @@
 class GolfersController < ApplicationController
   def index
-    @golfers = Golfer.all
+    @golfers = Golfer.limit_by(adult: true)
   end
 
   def show
