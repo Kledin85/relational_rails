@@ -10,6 +10,7 @@ RSpec.describe 'golfer', type: :feature do
   let!(:course_1) {Course.create!(name: "Kyles Course", city: "Ankeny", tee_times: 45)}
   let!(:golfer_1) {course_1.golfers.create!(name: "Kyle", adult: true, tee_time: Time.now)}
   let!(:golfer_2) {course_1.golfers.create!(name: "Wes", adult: true, tee_time: Time.now)}
+  let!(:golfer_3) {course_1.golfers.create!(name: "Joe", adult: false, tee_time: Time.now)}
   it 'index' do
     visit '/golfers'
 
@@ -127,6 +128,51 @@ RSpec.describe 'golfer', type: :feature do
       click_button('Create Golfer')
 
       expect(page).to have_content('Tiger Woods')
+    end
+  end
+  describe 'story 14' do 
+#     User Story 14, Child Update 
+
+# As a visitor
+# When I visit a Child Show page
+# Then I see a link to update that Child "Update Child"
+# When I click the link
+# I am taken to '/child_table_name/:id/edit' where I see a form to edit the child's attributes:
+# When I click the button to submit the form "Update Child"
+# Then a `PATCH` request is sent to '/child_table_name/:id',
+# the child's data is updated,
+# and I am redirected to the Child Show page where I see the Child's updated information
+    it 'has a link to update a golfer' do
+      visit "/golfers/#{golfer_1.id}"
+
+      click_link ("Update Golfer")
+
+      expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
+    end
+
+    it 'has a form to edit a golfer' do
+      visit "/golfers/#{golfer_1.id}/edit"
+
+      fill_in('name', with: "Kyle Ledin")
+      click_button('Update Golfer')
+
+      expect(current_path).to eq("/golfers/#{golfer_1.id}")
+    end
+  end
+
+  describe 'story 15' do
+#     User Story 15, Child Index only shows `true` Records 
+
+# As a visitor
+# When I visit the child index
+# Then I only see records where the boolean column is `true`
+    it 'only shows records where the boolean column is true' do
+      visit '/golfers'
+
+
+      expect(page).to have_content(golfer_1.name)
+      expect(page).to have_content(golfer_2.name)
+      expect(page).to_not have_content(golfer_3.name)
     end
   end
 end

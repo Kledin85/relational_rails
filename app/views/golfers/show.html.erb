@@ -1,6 +1,7 @@
 <%= link_to "Golfers", "/golfers" %> <%= link_to "Courses", "/courses" %>
 
 <h1><%= @golfer.name %><h1>
+<%= link_to "Update Golfer", "/golfers/#{@golfer.id}/edit" %>
 <%= @golfer.adult %>
 <%= @golfer.tee_time %>
 <%= @golfer.course_id %>
