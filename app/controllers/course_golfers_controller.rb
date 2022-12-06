@@ -1,8 +1,11 @@
 class CourseGolfersController < ApplicationController
   def index
     @course = Course.find(params[:course_id])
-    @golfers = @course.golfers
-   
+    if params[:sort]
+      @golfers = @course.golfers.order(name: params[:sort])
+    else
+     @golfers = @course.golfers
+    end
   end
 
   def new
