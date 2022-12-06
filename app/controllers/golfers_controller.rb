@@ -17,4 +17,12 @@ class GolfersController < ApplicationController
     redirect_to "/golfers"
   end
 
+  def edit
+    @golfer = Golfer.find(params[:id])
+  end
+
+  def update
+
+  end
+
 end
