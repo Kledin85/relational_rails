@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_01_204538) do
+ActiveRecord::Schema.define(version: 2022_12_06_204419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,12 @@ ActiveRecord::Schema.define(version: 2022_12_01_204538) do
     t.string "name"
     t.boolean "adult"
     t.datetime "tee_time"
-    t.integer "course_id"
+    t.integer "courses_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "course_id", null: false
+    t.index ["course_id"], name: "index_golfers_on_course_id"
   end
 
+  add_foreign_key "golfers", "courses"
 end

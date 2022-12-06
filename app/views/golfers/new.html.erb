@@ -1,0 +1,14 @@
+<%= form_with url: "/golfers", method: :post, local: true do |form| %>
+  <p><%= form.label :course_name %>
+  <%= form.text_field :course_name %></p>
+  <p><%= form.label :name %>
+  <%= form.text_field :name %></p>
+  <p><%= form.label :adult %>
+  <%= form.text_field :adult %></p>
+  <p><%= form.label :city %>
+  <%= form.text_field :city %></p>
+  <p><%= form.label :tee_time %>
+  <%= form.datetime_local_field :tee_time %></p>
+  
+  <%= form.submit "Create Golfer" %>
+  <% end %>

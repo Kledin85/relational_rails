@@ -25,6 +25,7 @@ class CoursesController < ApplicationController
     redirect_to '/courses'
   end
 
+private
   def course_params
     params.permit(:name)
   end

@@ -38,4 +38,5 @@ RSpec.describe 'The Course Update' do
     expect(current_path).to eq("/courses")
     expect(page).to have_content course_1.name = "Still Kyles Course"    
   end
+ 
 end   
