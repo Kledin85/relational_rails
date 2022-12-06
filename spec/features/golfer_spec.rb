@@ -175,4 +175,21 @@ RSpec.describe 'golfer', type: :feature do
       expect(page).to_not have_content(golfer_3.name)
     end
   end
+
+  describe 'story 16' do
+#User Story 16, Sort Parent's Children in Alphabetical Order by name 
+
+# As a visitor
+# When I visit the Parent's children Index Page
+# Then I see a link to sort children in alphabetical order
+# When I click on the link
+# I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
+      it 'has a link to sort alphabetically' do
+        visit "/courses/#{course_1.id}/golfers"
+
+        click_link('Sort Alphabetically')
+
+        expect(current_path).to eq()
+      end
+  end
 end
