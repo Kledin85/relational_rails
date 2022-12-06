@@ -110,7 +110,7 @@ RSpec.describe 'golfer', type: :feature do
       fill_in('adult', with: 'true')
       fill_in('tee_time', with: Time.now)
       click_button('Create Golfer')
-
+      save_and_open_page
       expect(page).to have_content('Tiger Woods')
     end
   end
@@ -186,10 +186,11 @@ RSpec.describe 'golfer', type: :feature do
 # I'm taken back to the Parent's children Index Page where I see all of the parent's children in alphabetical order
       it 'has a link to sort alphabetically' do
         visit "/courses/#{course_1.id}/golfers"
+        golfers = Golfer.all
 
-        click_link('Sort Alphabetically')
+        expect(page).to have_content('Sort Alphabetically')
 
-        expect(current_path).to eq()
+        expect(golfers.order(:name)).to eq([golfer_3,golfer_1,golfer_2])
       end
   end
 end

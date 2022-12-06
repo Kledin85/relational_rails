@@ -13,7 +13,7 @@ class GolfersController < ApplicationController
   def create
     # binding.pry
     parent = Course.find_by(name: params[:course_name])
-    golfer = Golfer.create(name: params[:name], course_id: "#{parent.id}")
+    golfer = Golfer.create(golfer_params, course_id: "#{parent.id}")
     redirect_to "/golfers"
   end
 
@@ -23,6 +23,17 @@ class GolfersController < ApplicationController
 
   def update
 
+  end
+
+  private
+
+  def golfer_params
+    params.permit(
+      :name,
+      :adult,
+      :tee_time,
+      :course_name
+    )
   end
 
 end
