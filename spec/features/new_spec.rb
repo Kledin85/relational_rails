@@ -25,7 +25,6 @@ RSpec.describe 'The Course Creation' do
     fill_in('Name', with: "AGC")
     click_button('Create Course')
 
-    new_course_id = Course.last.id
     expect(current_path).to eq("/courses")
     expect(page).to have_content("AGC")
   end

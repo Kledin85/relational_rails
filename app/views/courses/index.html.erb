@@ -2,6 +2,6 @@
 <h1> Courses </h1>
 <%= link_to "Create Course", "/courses/new" %>
 
-<% @courses.order(created_at: :desc).each do |course| %>
-   <p><%= course.name %> <%= course.created_at %></p>
+<% @courses.newest_first.each do |course| %>
+   <p><%= course.name %> <%= course.created_at %></p> 
   <% end %>

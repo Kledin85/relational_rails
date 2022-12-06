@@ -4,7 +4,7 @@ class CreateGolfer < ActiveRecord::Migration[5.2]
       t.string :name
       t.boolean :adult
       t.datetime :tee_time
-      t.integer :golfcourses_id
+      t.integer :courses_id
 
       t.timestamps
     end

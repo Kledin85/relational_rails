@@ -1,5 +1,5 @@
 <%= link_to "Golfers", "/golfers" %> <%= link_to "Courses", "/courses" %>
-
+<%= link_to "Create Golfer", "/courses/#{@course.id}/golfers/new" %>
 <% @golfers.each do |golfer| %>
   <p><%= golfer.name %></p>
   <p><%= golfer.adult %></p>
