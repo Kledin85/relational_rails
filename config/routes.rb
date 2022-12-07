@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/courses/:id/edit', to: 'courses#edit'
   post '/courses/:id/edit', to: 'courses#edit'
   patch '/courses/:id', to: 'courses#update'
+  delete '/courses/:id', to: 'courses#destroy'
   
   root to: 'course_golfers#index'
   get "/courses/:course_id/golfers", to: 'course_golfers#index'
@@ -22,4 +23,5 @@ Rails.application.routes.draw do
   post "/golfers", to: 'golfers#create'
   get "/golfers/:id/edit", to: 'golfers#edit'
   patch '/golfers/:id', to: 'golfers#update'
+  delete '/golfers/:id', to: 'golfers#destroy'
 end

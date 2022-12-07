@@ -135,11 +135,30 @@ end
 # When I click the link
 # I should be taken to that parent's edit page where I can update its information just like in User Story 12
 
-it 'has a link next to every parent to edit the index' do
-  visit "/courses"
+  it 'has a link next to every parent to edit the index' do
+    visit "/courses"
 
-  click_link("edit #{course_1.name}")
+   click_link("edit #{course_1.name}")
 
-  expect(current_path).to eq("/courses/#{course_1.id}/edit")
-end
+    expect(current_path).to eq("/courses/#{course_1.id}/edit")
+  end
+
+#   User Story 19, Parent Delete 
+
+# As a visitor
+# When I visit a parent show page
+# Then I see a link to delete the parent
+# When I click the link "Delete Parent"
+# Then a 'DELETE' request is sent to '/parents/:id',
+# the parent is deleted, and all child records are deleted
+# and I am redirected to the parent index page where I no longer see this parent
+
+  it 'can delete a parent' do 
+    visit "/courses/#{course_1.id}"
+
+    click_link("Delete #{course_1.name}")
+
+    expect(current_path).to eq("/courses")
+    expect(page).to_not have_content("Kyles Course")
+  end
 end

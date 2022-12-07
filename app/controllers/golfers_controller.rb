@@ -25,6 +25,12 @@ class GolfersController < ApplicationController
 
   end
 
+  def destroy
+    golfer = Golfer.find(params[:id])
+    golfer.destroy
+    redirect_to "/golfers"
+  end
+
   private
 
   def golfer_params

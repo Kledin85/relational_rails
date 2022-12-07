@@ -202,19 +202,38 @@ RSpec.describe 'golfer', type: :feature do
 # Next to every child, I see a link to edit that child's info
 # When I click the link
 # I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
-it 'has a link next to every child to edit its info on the childs index page' do
-  visit "/golfers"
+    it 'has a link next to every child to edit its info on the childs index page' do
+     visit "/golfers"
 
-  click_link("Edit #{golfer_1.name}")
+      click_link("Edit #{golfer_1.name}")
 
-  expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
-end
-it 'has a link next to every child to edit its info on the parent child index page' do
-  visit "/courses/#{course_1.id}/golfers"
+      expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
+   end
+    it 'has a link next to every child to edit its info on the parent child index page' do
+     visit "/courses/#{course_1.id}/golfers"
 
-  click_link("Edit #{golfer_1.name}")
+      click_link("Edit #{golfer_1.name}")
 
-  expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
-end
-end
+      expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
+    end
+  end
+
+  describe 'story 19' do
+#     User Story 20, Child Delete 
+
+# As a visitor
+# When I visit a child show page
+# Then I see a link to delete the child "Delete Child"
+# When I click the link
+# Then a 'DELETE' request is sent to '/child_table_name/:id',
+# the child is deleted,
+# and I am redirected to the child index page where I no longer see this child
+    it 'can delete a child' do 
+      visit "/golfers/#{golfer_1.id}"
+      click_link("Delete #{golfer_1.name}")
+      
+      expect(current_path).to eq("/golfers")
+      expect(page).to_not have_content("Kyle")
+    end
+  end
 end
