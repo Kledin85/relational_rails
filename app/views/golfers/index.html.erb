@@ -4,7 +4,8 @@
 <%= link_to "New Golfer", "/golfers/new" %>
 
 <% @golfers.each do |golfer| %>
-    <h1><%= golfer.name %></h1>
+    <h1><%= golfer.name %><%= link_to "Edit #{golfer.name}", "/golfers/#{golfer.id}/edit" %>
+    </h1>
     <p>Adult?:<%= golfer.adult %></p>
     <p>Tee_time:<%=golfer.tee_time %></p>
     <p>Course_id:<%= golfer.course_id %></p>

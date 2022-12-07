@@ -193,4 +193,28 @@ RSpec.describe 'golfer', type: :feature do
         expect(golfers.order(:name)).to eq([golfer_3,golfer_1,golfer_2])
       end
   end
+
+  describe 'story 18' do 
+#     User Story 18, Child Update From Childs Index Page 
+
+# As a visitor
+# When I visit the `child_table_name` index page or a parent `child_table_name` index page
+# Next to every child, I see a link to edit that child's info
+# When I click the link
+# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 14
+it 'has a link next to every child to edit its info on the childs index page' do
+  visit "/golfers"
+
+  click_link("Edit #{golfer_1.name}")
+
+  expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
+end
+it 'has a link next to every child to edit its info on the parent child index page' do
+  visit "/courses/#{course_1.id}/golfers"
+
+  click_link("Edit #{golfer_1.name}")
+
+  expect(current_path).to eq("/golfers/#{golfer_1.id}/edit")
+end
+end
 end

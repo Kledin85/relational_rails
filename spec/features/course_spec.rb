@@ -126,4 +126,20 @@ end
     expect(current_path).to eq("/courses/#{course_1.id}/golfers")
 
   end
+
+#   User Story 17, Parent Update From Parent Index Page 
+
+# As a visitor
+# When I visit the parent index page
+# Next to every parent, I see a link to edit that parent's info
+# When I click the link
+# I should be taken to that parent's edit page where I can update its information just like in User Story 12
+
+it 'has a link next to every parent to edit the index' do
+  visit "/courses"
+
+  click_link("edit #{course_1.name}")
+
+  expect(current_path).to eq("/courses/#{course_1.id}/edit")
+end
 end
