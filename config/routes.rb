@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   post "/golfers", to: 'golfers#create'
   get "/golfers/:id/edit", to: 'golfers#edit'
   patch '/golfers/:id', to: 'golfers#update'
+  delete '/golfers/:id', to: 'golfers#destroy'
 end

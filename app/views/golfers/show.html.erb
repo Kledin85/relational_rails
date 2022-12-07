@@ -5,3 +5,4 @@
 <%= @golfer.adult %>
 <%= @golfer.tee_time %>
 <%= @golfer.course_id %>
+<%= link_to "Delete #{@golfer.name}", "/golfers/#{@golfer.id}", method: :delete %>
