@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/courses/:id/edit', to: 'courses#edit'
   post '/courses/:id/edit', to: 'courses#edit'
   patch '/courses/:id', to: 'courses#update'
+  delete '/courses/:id', to: 'courses#destroy'
   
   root to: 'course_golfers#index'
   get "/courses/:course_id/golfers", to: 'course_golfers#index'

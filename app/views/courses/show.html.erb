@@ -4,3 +4,4 @@
 <%= button_to "Update #{@course.name}", "/courses/#{@course.id}/edit" %>
 <p> Golfers:<%= @course.golfers_count %></p>
 <%= link_to "Course Golfers", "/courses/#{@course.id}/golfers" %>
+<%= link_to "Delete #{@course.name}", "/courses/#{@course.id}", method: :delete %>
